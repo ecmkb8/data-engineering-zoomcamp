@@ -1,10 +1,6 @@
 variable "credentials" {
   description = "My Credentials"
-<<<<<<< HEAD:week_1_basics_n_setup/1_terraform_gcp/terraform/terraform_with_variables/variables.tf
-  default     = "~/gcloud_creds/dtc-de-course-406816-6d128f9b1cca.json"
-=======
   default     = "/Users/evanmoore/gcloud_creds/dtc-de-course-406816-6d128f9b1cca.json"
->>>>>>> main:01-docker-terraform/1_terraform_gcp/terraform/terraform_with_variables/variables.tf
   #ex: if you have a directory where this file is called keys with your service account json file
   #saved there as my-creds.json you could use default = "./keys/my-creds.json"
 }
@@ -36,11 +32,7 @@ variable "bq_dataset_name" {
 variable "gcs_bucket_name" {
   description = "My Storage Bucket Name"
   #Update the below to a unique bucket name
-<<<<<<< HEAD:week_1_basics_n_setup/1_terraform_gcp/terraform/terraform_with_variables/variables.tf
-  default     = "dtc-de-evan"
-=======
   default     = "dtc_de_2024_bucket"
->>>>>>> main:01-docker-terraform/1_terraform_gcp/terraform/terraform_with_variables/variables.tf
 }
 
 variable "gcs_storage_class" {
