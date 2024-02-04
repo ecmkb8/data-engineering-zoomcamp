@@ -1,6 +1,6 @@
 # Week 6: Stream Processing
 
-## Code structure
+# Code structure
 * [Java examples](java)
 * [Python examples](python)
 * [KSQLD examples](ksqldb)
@@ -74,13 +74,7 @@ Please follow the steps described under [pyspark-streaming](python/streams-examp
 
 ## Homework
 
-[Form](https://forms.gle/rK7268U92mHJBpmW7)
-
-The homework is mostly theoretical. In the last question you have to provide working code link, please keep in mind that this
-question is not scored.
-
-Deadline: 13 March 2023, 22:00 CET
-
+* [2024 Homework](../cohorts/2024/)
 
 ## Community notes
 
@@ -88,5 +82,6 @@ Did you take notes? You can share them here.
 
 * [Notes by Alvaro Navas](https://github.com/ziritrion/dataeng-zoomcamp/blob/main/notes/6_streaming.md )
 * [Marcos Torregrosa's blog (spanish)](https://www.n4gash.com/2023/data-engineering-zoomcamp-semana-6-stream-processing/)
+* [Notes by Oscar Garcia](https://github.com/ozkary/Data-Engineering-Bootcamp/tree/main/Step6-Streaming)
 * Add your notes here (above this line)
 
