@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: staging
+    database: dtc-de-course-406816
+    schema: trips_data_all
+    tables:
+      - name: green_tripdata
+        identifier: green_tripdata
+      #   columns:
+      #     - name: room_type
+      #       tests:
+      #         - dbt_expectations.expect_column_distinct_count_to_equal:
+      #             value: 4
+      #     - name: price
+      #       tests:
+      #         - dbt_expectations.expect_column_values_to_match_regex:
+      #             regex: "^\\\\$[0-9][0-9\\\\.]+$"
+      - name: yellow_tripdata
+        identifier: yellow_tripdata
+        # loaded_at_field: date
+        # freshness:
+        #   warn_after: {count: 1, period: hour}
+        #   error_after: {count: 24, period: hour}

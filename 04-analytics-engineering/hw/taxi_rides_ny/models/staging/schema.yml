@@ -1,0 +1,10 @@
+version: 2
+
+models:
+
+  - name: stg__green_tripdata
+    # config:
+    #   schema: staging 
+  - name: stg__yellow_tripdata
+    # config:
+    #   schema: staging 
