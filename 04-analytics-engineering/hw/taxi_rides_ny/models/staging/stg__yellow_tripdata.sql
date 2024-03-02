@@ -3,22 +3,22 @@
 with tripdata as 
 (
   select *,
-    row_number() over(partition by vendorid, tpep_pickup_datetime) as rn
+    row_number() over(partition by vendor_id, tpep_pickup_datetime) as rn
   from {{ source('staging','yellow_tripdata') }}
-  where vendorid is not null 
+  where vendor_id is not null 
 )
 select
    -- identifiers
-    {{ dbt_utils.generate_surrogate_key(['vendorid', 'tpep_pickup_datetime']) }} as tripid,    
-    {{ dbt.safe_cast("vendorid", api.Column.translate_type("integer")) }} as vendorid,
-    {{ dbt.safe_cast("ratecodeid", api.Column.translate_type("integer")) }} as ratecodeid,
-    {{ dbt.safe_cast("pulocationid", api.Column.translate_type("integer")) }} as pickup_locationid,
-    {{ dbt.safe_cast("dolocationid", api.Column.translate_type("integer")) }} as dropoff_locationid,
+    {{ dbt_utils.generate_surrogate_key(['vendor_id', 'tpep_pickup_datetime']) }} as trip_id,    
+    {{ dbt.safe_cast("vendor_id", api.Column.translate_type("integer")) }} as vendor_id,
+    {{ dbt.safe_cast("rate_code_id", api.Column.translate_type("integer")) }} as rate_code_id,
+    {{ dbt.safe_cast("pu_location_id", api.Column.translate_type("integer")) }} as pu_location_id,
+    {{ dbt.safe_cast("do_location_id", api.Column.translate_type("integer")) }} as do_location_id,
 
     -- timestamps
     cast(tpep_pickup_datetime as timestamp) as pickup_datetime,
     cast(tpep_dropoff_datetime as timestamp) as dropoff_datetime,
-    
+    cast(tpep_pickup_date as date) as pickup_date,    
     -- trip info
     store_and_fwd_flag,
     {{ dbt.safe_cast("passenger_count", api.Column.translate_type("integer")) }} as passenger_count,
@@ -35,8 +35,11 @@ select
     cast(0 as numeric) as ehail_fee,
     cast(improvement_surcharge as numeric) as improvement_surcharge,
     cast(total_amount as numeric) as total_amount,
+    cast( congestion_surcharge as numeric) as congestion_surcharge, 
     coalesce({{ dbt.safe_cast("payment_type", api.Column.translate_type("integer")) }},0) as payment_type,
     {{ get_payment_type_description('payment_type') }} as payment_type_description
+
+
 from tripdata
 where rn = 1
 
